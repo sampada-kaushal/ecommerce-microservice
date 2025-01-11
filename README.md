@@ -3,7 +3,6 @@
 
 ## Overview
 This project is a scalable Order Management System (OMS) microservice for an e-commerce platform. It enables efficient handling of orders, inventory management, and order status updates with a microservices architecture to ensure scalability, resilience, and maintainability.
----
 
 ## Features
 - Order Placement: Validates inventory and processes new orders.
