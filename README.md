@@ -42,9 +42,10 @@ Set the database connection in application.yml.
 
 Import the connection details on MySQL workbench and it should look like below screenshots-
 
-<img width="1700" alt="Screenshot 2025-01-12 at 18 20 08" src="https://github.com/user-attachments/assets/4c95645b-f1bd-476b-83d6-d6da60ed9086" />
-<img width="1031" alt="Screenshot 2025-01-12 at 18 11 25" src="https://github.com/user-attachments/assets/451012b0-63ba-4771-aa5d-1241c17b351e" />
-<img width="987" alt="Screenshot 2025-01-12 at 18 11 21" src="https://github.com/user-attachments/assets/9614dab1-808d-4648-9494-95ce59529477" />
+<img width="1031" alt="Screenshot 2025-01-12 at 18 11 25" src="https://github.com/user-attachments/assets/1e8710f6-59e9-493c-92e9-ab1ce5654f04" />
+<img width="987" alt="Screenshot 2025-01-12 at 18 11 21" src="https://github.com/user-attachments/assets/ae512f67-d322-4470-ab34-761d82a243bd" />
+<img width="1479" alt="Screenshot 2025-01-12 at 18 11 05" src="https://github.com/user-attachments/assets/3ad61604-963f-45ed-9019-25135f74fc04" />
+
 
 ### 3. Install and run RabbitMQ server (MacOS)
 ```bash
