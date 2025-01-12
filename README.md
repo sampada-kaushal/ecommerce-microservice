@@ -172,5 +172,11 @@ Below are screenshots of local run and EC2 instance run-
 - We can add Read Replicas for handling heavy read traffic.
     - Route all SELECT queries for Product to replicas, while writes go to the master database.
  
-## Note
-To ensure application JAR is always running on an EC2 instance and available whenever a person hits the API, can set up a combination of a process manager, auto-restart scripts, and monitoring tools (beyond the project scope). 
+## Important Notes
+- RabbitMQ server must be up as well in EC2.
+- To ensure application JAR is always running on an EC2 instance and available whenever a person hits the API, can set up a combination of a process manager, auto-restart scripts, and monitoring tools (beyond the project scope).
+- Refer below screenshot-
+
+<img width="1304" alt="Screenshot 2025-01-12 at 19 53 50" src="https://github.com/user-attachments/assets/8cef7633-0905-4800-9243-22f4fc5bd11b" />
+
+  
