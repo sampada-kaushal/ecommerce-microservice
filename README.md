@@ -62,6 +62,7 @@ mvn spring-boot:run
 - Entire API documentation can be accessed from here - https://documenter.getpostman.com/view/7235087/2sAYQWKDUf
 - EC2 hostname = 54.159.196.251:8080
 - Import postman collection json in repo for direct import on postman app - Ecommerce Microservice.postman_collection.json
+- NOTE: Refer examples to check edge cases handled by APIs.
 
 <img width="1700" alt="Screenshot 2025-01-12 at 18 20 08" src="https://github.com/user-attachments/assets/44afab3c-04da-4621-8959-ab2cfc9877a4" />
 
@@ -145,8 +146,8 @@ In addition to above, later have added ```EcommerceMicroserviceApplicationTests`
 ## Diagram
 Below is very raw and basic diagram of the system implemented-
 
-<img width="1204" alt="Screenshot 2025-01-12 at 19 11 03" src="https://github.com/user-attachments/assets/7f1b72ae-a45c-4294-ad9b-5fd7d2ae903a" />
 
+<img width="1177" alt="Screenshot 2025-01-12 at 19 12 35" src="https://github.com/user-attachments/assets/ce8eeb4d-6a55-4692-90fd-5f57e152c1ba" />
 
 
 
