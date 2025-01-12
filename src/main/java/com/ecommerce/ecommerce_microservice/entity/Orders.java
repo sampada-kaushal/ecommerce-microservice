@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//Orders because Order is reserved keyword in MysSQL
+// Orders because Order is reserved keyword in MysSQL
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

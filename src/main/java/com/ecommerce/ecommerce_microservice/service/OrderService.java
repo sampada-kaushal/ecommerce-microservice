@@ -8,19 +8,19 @@ import com.ecommerce.ecommerce_microservice.entity.*;
 import com.ecommerce.ecommerce_microservice.exception.InsufficientInventoryException;
 import com.ecommerce.ecommerce_microservice.exception.InvalidOrderStatusException;
 import com.ecommerce.ecommerce_microservice.exception.OrderNotFoundException;
-import com.ecommerce.ecommerce_microservice.exception.ProductNotFoundException;
+import com.ecommerce.ecommerce_microservice.exception.RateLimitExceededException;
 import com.ecommerce.ecommerce_microservice.repository.*;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import io.github.resilience4j.ratelimiter.RateLimiter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Service
 public class OrderService {
@@ -35,15 +35,56 @@ public class OrderService {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
-    @Transactional
+    @Autowired
+    private InventoryService inventoryService;
+    private final OrderMessageProducer orderMessageProducer;
+    @Autowired
+    private RateLimiter rateLimiter;
+    
+    @Autowired
+    public OrderService(OrderMessageProducer orderMessageProducer) {
+       
+        this.orderMessageProducer = orderMessageProducer;
+    }
+
+    //Added a new function to test Queue implementation via unit test, instead of updating current implementation
+    public OrderResponseDto placeOrderQueue(OrderRequestDto request) {
+        logger.info("Create an order and set the initial status to 'PENDING'");
+        Orders order = new Orders();
+        order.setStatus(OrderStatus.PENDING);
+        order = orderRepository.save(order);
+
+        logger.info("Send order details to the queue for asynchronous processing");
+        orderMessageProducer.sendOrderMessage(order.getId().toString());
+
+        logger.info("Return order response with initial 'PENDING' status");
+        return new OrderResponseDto(order.getId().intValue(), order.getStatus().name(), 0.0);
+    }
+    
+    //Added a new function to test rate limit implementation via unit test, instead of updating current implementation
+    public OrderResponseDto placeOrderRateLimit(OrderRequestDto orderRequest) {
+        try{  
+            logger.info("Proceeding with order processing");
+            rateLimiter.acquirePermission();
+            return placeOrder(orderRequest);
+        } catch(RateLimitExceededException e)  {
+            logger.error("Rate limit exceeded");
+            throw new RateLimitExceededException("Rate limit exceeded, please try again later.");
+        }
+    }
+
+    //Place an order
+    @Transactional(rollbackFor = Exception.class)
     public OrderResponseDto placeOrder(OrderRequestDto request) {
-        // Logic for placing an order
+        logger.info("Placing order function");
         List<OrderItem> orderItems = new ArrayList<>();
         BigDecimal totalPrice = BigDecimal.ZERO;
 
         for (OrderRequestDto.ProductItem item : request.getItems()) {
-            Product product = productRepository.findById((long) item.getProductId())
-                    .orElseThrow(() -> new ProductNotFoundException("Product not found: " + item.getProductId()));
+            //Product product = productRepository.findById((long) item.getProductId())
+            // .orElseThrow(() -> new ProductNotFoundException("Product not found: " + item.getProductId()));
+            Product product = inventoryService.getProductForUpdate((long) item.getProductId()); // Pessimistic locking
+                   
             if (product.getStockQuantity() < item.getQuantity()) {
                 throw new InsufficientInventoryException("Not enough stock for product: " + product.getName());
             }
@@ -72,9 +113,10 @@ public class OrderService {
                 totalPrice.doubleValue());
     }
 
+    //Update order status
     @Transactional
     public OrderStatusResponseDto updateOrderStatus(Long orderId, OrderStatusRequestDto request) {
-        // Logic for updating order status
+        logger.info("Inside updateOrderStatus() ");
         Orders order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new OrderNotFoundException("Order not found : " + orderId));
         String inputStatus = request.getStatus().toUpperCase();
@@ -91,7 +133,7 @@ public class OrderService {
     // Helper method to validate the status
     private boolean isValidOrderStatus(String status) {
         try {
-            OrderStatus.valueOf(status); // Will throw IllegalArgumentException if invalid
+            OrderStatus.valueOf(status);
             return true;
         } catch (IllegalArgumentException e) {
             return false;

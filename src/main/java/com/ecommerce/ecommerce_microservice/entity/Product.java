@@ -22,9 +22,17 @@ public class Product {
     private BigDecimal price;
     private Integer stockQuantity;
 
+    // @Version
+    // private Long version; //For optimistic locking
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Product orElseThrow(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'orElseThrow'");
+    }
 }

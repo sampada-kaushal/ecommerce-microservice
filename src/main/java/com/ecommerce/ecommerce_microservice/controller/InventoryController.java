@@ -18,6 +18,7 @@ import com.ecommerce.ecommerce_microservice.entity.Product;
 import com.ecommerce.ecommerce_microservice.exception.InvalidInputException;
 import com.ecommerce.ecommerce_microservice.service.InventoryService;
 
+//Controller class for Inventory Management
 @RestController
 @RequestMapping("/api/inventory")
 public class InventoryController {
@@ -26,7 +27,7 @@ public class InventoryController {
 
     @GetMapping("/{productId}")
     public ResponseEntity<InventoryResponseDto> getProductInventory(@PathVariable int productId) {
-        return ResponseEntity.ok(inventoryService.getProductInventory((long)productId));
+        return ResponseEntity.ok(inventoryService.getProductInventory((long) productId));
     }
 
     @PostMapping
@@ -35,9 +36,9 @@ public class InventoryController {
             @RequestParam String description,
             @RequestParam(required = false) BigDecimal price,
             @RequestParam Integer stockQuantity) {
-                   if (price == null) {
-        throw new InvalidInputException("Price is a required field and must be a valid number");
-    }
+        if (price == null) {
+            throw new InvalidInputException("Price is a required field and must be a valid number");
+        }
         return ResponseEntity.ok(inventoryService.createProduct(name, description, price, stockQuantity));
     }
 

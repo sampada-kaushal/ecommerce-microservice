@@ -8,9 +8,15 @@ import lombok.Data;
 public class OrderRequestDto {
     int userId;
     List<ProductItem> items;
+
     @Data
-    public static class ProductItem{
+    public static class ProductItem {
         private int productId;
         private int quantity;
+
+        public ProductItem(int productId, Integer quantity) {
+            this.productId = productId;
+            this.quantity = quantity;
+        }
     }
 }
