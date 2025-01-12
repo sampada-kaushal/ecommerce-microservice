@@ -42,6 +42,9 @@ Set the database connection in application.yml.
 
 Import the connection details on MySQL workbench and it should look like below screenshots-
 
+<img width="1700" alt="Screenshot 2025-01-12 at 18 20 08" src="https://github.com/user-attachments/assets/4c95645b-f1bd-476b-83d6-d6da60ed9086" />
+<img width="1031" alt="Screenshot 2025-01-12 at 18 11 25" src="https://github.com/user-attachments/assets/451012b0-63ba-4771-aa5d-1241c17b351e" />
+<img width="987" alt="Screenshot 2025-01-12 at 18 11 21" src="https://github.com/user-attachments/assets/9614dab1-808d-4648-9494-95ce59529477" />
 
 ### 3. Install and run RabbitMQ server (MacOS)
 ```bash
@@ -59,7 +62,10 @@ mvn spring-boot:run
 - EC2 hostname = 54.159.196.251:8080
 - Import postman collection json in repo for direct import on postman app - Ecommerce Microservice.postman_collection.json
 
+<img width="1700" alt="Screenshot 2025-01-12 at 18 20 08" src="https://github.com/user-attachments/assets/44afab3c-04da-4621-8959-ab2cfc9877a4" />
+
 ---
+
 
 ## Directory Structure
 ```
@@ -132,13 +138,21 @@ In addition to above, later have added ```EcommerceMicroserviceApplicationTests`
 - placeOrderQueue for sending Order requests by creation of OrderMessageProducer and OrderMessageConsumer. 
 - below screenshot tells basic run of unit tests.
 
+<img width="239" alt="Screenshot 2025-01-12 at 17 57 07" src="https://github.com/user-attachments/assets/0a0ff9b8-823a-45d5-8c43-2708514987d2" />
+
+
 ## Diagram
 Below is very raw and basic diagram of the system implemented-
+
+<img width="1215" alt="Screenshot 2025-01-12 at 18 51 41" src="https://github.com/user-attachments/assets/0de1195b-7944-4c98-aa35-a1243eeec9fc" />
+
 
 
 ## Local and EC2 Run Screenshot
 Below are screenshots of local run and EC2 instance run-
 
+<img width="736" alt="Screenshot 2025-01-12 at 14 46 32" src="https://github.com/user-attachments/assets/f9630529-e6e3-41b6-b474-86efeadb8826" />
+<img width="1586" alt="Screenshot 2025-01-12 at 03 44 23" src="https://github.com/user-attachments/assets/532c4dbd-7cbf-4174-952b-77bfa28baae7" />
 
 
 ## Scalabiling strategies and future Enhancements
