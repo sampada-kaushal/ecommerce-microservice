@@ -170,4 +170,7 @@ Below are screenshots of local run and EC2 instance run-
 - We can use a distributed database (e.g., CockroachDB) or search system (e.g., Elasticsearch) for handling catalog search at scale.
 - Horizontal Scaling: Use a load balancer (e.g. AWS ELB) to distribute traffic across multiple application or database servers.
 - We can add Read Replicas for handling heavy read traffic.
-    - Route all SELECT queries for Product to replicas, while writes go to the master database.   
+    - Route all SELECT queries for Product to replicas, while writes go to the master database.
+ 
+## Note
+To ensure application JAR is always running on an EC2 instance and available whenever a person hits the API, can set up a combination of a process manager, auto-restart scripts, and monitoring tools (beyond the project scope). 
