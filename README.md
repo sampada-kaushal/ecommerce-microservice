@@ -42,6 +42,10 @@ Set the database connection in application.yml.
 
 Import the connection details on MySQL workbench and it should look like below screenshots-
 
+<img width="1031" alt="Screenshot 2025-01-12 at 18 11 25" src="https://github.com/user-attachments/assets/1e8710f6-59e9-493c-92e9-ab1ce5654f04" />
+<img width="987" alt="Screenshot 2025-01-12 at 18 11 21" src="https://github.com/user-attachments/assets/ae512f67-d322-4470-ab34-761d82a243bd" />
+<img width="1479" alt="Screenshot 2025-01-12 at 18 11 05" src="https://github.com/user-attachments/assets/3ad61604-963f-45ed-9019-25135f74fc04" />
+
 
 ### 3. Install and run RabbitMQ server (MacOS)
 ```bash
@@ -58,8 +62,12 @@ mvn spring-boot:run
 - Entire API documentation can be accessed from here - https://documenter.getpostman.com/view/7235087/2sAYQWKDUf
 - EC2 hostname = 54.159.196.251:8080
 - Import postman collection json in repo for direct import on postman app - Ecommerce Microservice.postman_collection.json
+- NOTE: Refer examples to check edge cases handled by APIs.
+
+<img width="1700" alt="Screenshot 2025-01-12 at 18 20 08" src="https://github.com/user-attachments/assets/44afab3c-04da-4621-8959-ab2cfc9877a4" />
 
 ---
+
 
 ## Directory Structure
 ```
@@ -132,13 +140,22 @@ In addition to above, later have added ```EcommerceMicroserviceApplicationTests`
 - placeOrderQueue for sending Order requests by creation of OrderMessageProducer and OrderMessageConsumer. 
 - below screenshot tells basic run of unit tests.
 
+<img width="239" alt="Screenshot 2025-01-12 at 17 57 07" src="https://github.com/user-attachments/assets/0a0ff9b8-823a-45d5-8c43-2708514987d2" />
+
+
 ## Diagram
 Below is very raw and basic diagram of the system implemented-
+
+
+<img width="1177" alt="Screenshot 2025-01-12 at 19 12 35" src="https://github.com/user-attachments/assets/ce8eeb4d-6a55-4692-90fd-5f57e152c1ba" />
+
 
 
 ## Local and EC2 Run Screenshot
 Below are screenshots of local run and EC2 instance run-
 
+<img width="736" alt="Screenshot 2025-01-12 at 14 46 32" src="https://github.com/user-attachments/assets/f9630529-e6e3-41b6-b474-86efeadb8826" />
+<img width="1586" alt="Screenshot 2025-01-12 at 03 44 23" src="https://github.com/user-attachments/assets/532c4dbd-7cbf-4174-952b-77bfa28baae7" />
 
 
 ## Scalabiling strategies and future Enhancements
