@@ -145,7 +145,8 @@ In addition to above, later have added ```EcommerceMicroserviceApplicationTests`
 ## Diagram
 Below is very raw and basic diagram of the system implemented-
 
-<img width="1215" alt="Screenshot 2025-01-12 at 18 51 41" src="https://github.com/user-attachments/assets/0de1195b-7944-4c98-aa35-a1243eeec9fc" />
+<img width="1204" alt="Screenshot 2025-01-12 at 19 11 03" src="https://github.com/user-attachments/assets/7f1b72ae-a45c-4294-ad9b-5fd7d2ae903a" />
+
 
 
 
